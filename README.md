@@ -5,9 +5,11 @@
 - I used grid layout in order to change the columns and rows that are seen in different screen sizes. I also used media queries to adjust the orientation of the profile and card contents for different screen sizes and when the size is changed on any device.
 
 1. Here is the Desktop view at 1440px.
+
    ![Desktop 1440px](./images/readme/spots-1440.png)
 
 2. Here is the Tablet view, that adapts at 627px.
+
    ![Tablet 627px](./images/readme/spots-627.png)
 
 3. Here is the mobile view that will adapt until 320px.
@@ -16,6 +18,7 @@
 
 ### Check It Out! :)
 
-- I have prepared a video to explain how the webpage adapts here (after first code review)
+- I have prepared a video to explain how the webpage adapts here:
+  https://drive.google.com/file/d/1l1G_7szAO5JD5biRbBzoBZJO-dfqD77-/view?usp=sharing
 
 - Here is the link to the webpage: https://cam-williams-1.github.io/se_project_spots/
