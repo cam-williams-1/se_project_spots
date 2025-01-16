@@ -1,45 +1,81 @@
-const initialCards = {
-  objectOne: {
+const initialCards = [
+  {
     name: "Coffee",
-    link: "https://unsplash.com/photos/a-cup-of-coffee-sitting-on-top-of-a-counter-z2PDbBmL4xE",
+    link: "https://images.unsplash.com/photo-1724168659171-bc1864cd9f2c?q=80&w=2535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DPDbBmL4xE",
   },
-
-  objectTwo: {
+  {
     name: "Books",
-    link: "https://unsplash.com/photos/elegant-reading-room-with-library-and-armchair-for-relaxing-space-for-text-3d-rendering-imdnMdUDomE",
+    link: "https://plus.unsplash.com/premium_photo-1681488394409-5614ef55488c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
-  objectThree: {
+  {
     name: "Camping",
-    link: "https://unsplash.com/photos/orange-camping-tent-near-green-trees-y8Ngwq34_Ak",
+    link: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
-  objectFour: {
+  {
     name: "Community",
-    link: "https://unsplash.com/photos/hands-of-unrecognizable-senior-couple-with-their-grandaughter-planting-a-seedling-on-the-allotment-man-woman-and-a-small-girl-gardening-laQlvA_rdJU",
+    link: "https://plus.unsplash.com/premium_photo-1681965550198-c1c039421905?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
-  objectFive: {
+  {
     name: "Music",
-    link: "https://unsplash.com/photos/a-group-of-people-that-are-on-stage-1zNJUusB55E",
+    link: "https://plus.unsplash.com/premium_photo-1682855223686-02ea2345bcde?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-
-  objectSix: {
+  {
     name: "Coding",
-    link: "https://unsplash.com/photos/a-person-sitting-at-a-desk-with-two-computer-monitors-XY0Cx9QsK3s",
+    link: "https://plus.unsplash.com/premium_photo-1678566153919-86c4ba4216f1?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-};
+];
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
-
 const editProfileModal = document.querySelector("#edit-profile-modal");
-
-profileEditButton.addEventListener("click", function () {
-  editProfileModal.classList.add("modal_opened");
-});
-
+const profileName = document.querySelector(".profile__name");
 const profileModalClose = document.querySelector(".modal__close-btn");
+const editModalNameInput = document.querySelector("#profile-name-input");
+const profileDescription = document.querySelector(".profile__description");
+const editModalDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+const editFormElement = document.querySelector(".modal__form");
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards__list");
 
-profileModalClose.addEventListener("click", function () {
+function getCardElement(data) {
+  console.log(data);
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+  const cardNameEl = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardImageAlt = cardElement.querySelector(".card__image");
+
+  cardNameEl.textContent = data.name;
+  cardImage.src = data.link;
+  cardImageAlt.alt = data.name;
+
+  return cardElement;
+}
+
+for (let i = 0; i < initialCards.length; i++) {
+  const cardElement = getCardElement(initialCards[i]);
+  cardsList.prepend(cardElement);
+}
+
+function openModal() {
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent;
+  editProfileModal.classList.add("modal_opened");
+}
+
+function closeModal() {
   editProfileModal.classList.remove("modal_opened");
-});
+}
+
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = editModalNameInput.value;
+  profileDescription.textContent = editModalDescriptionInput.value;
+  closeModal();
+}
+
+profileEditButton.addEventListener("click", openModal);
+profileModalClose.addEventListener("click", closeModal);
+editFormElement.addEventListener("submit", handleEditFormSubmit);
