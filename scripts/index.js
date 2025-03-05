@@ -1,7 +1,7 @@
 const initialCards = [
   {
-    name: "Coffee",
-    link: "https://images.unsplash.com/photo-1724168659171-bc1864cd9f2c?q=80&w=2535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3DPDbBmL4xE",
+    name: "The Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
   {
     name: "Books",
@@ -17,7 +17,7 @@ const initialCards = [
   },
   {
     name: "Music",
-    link: "https://plus.unsplash.com/premium_photo-1682855223686-02ea2345bcde?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    link: "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Coding",
@@ -37,7 +37,12 @@ const editModalDescriptionInput = document.querySelector(
 const editFormElement = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
-
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImage = previewModal.querySelector(".modal__image");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+const previewModalCloseBtn = previewModal.querySelector(
+  ".modal__close-btn_preview"
+);
 const cardModal = document.querySelector("#card-modal");
 const cardForm = cardModal.querySelector(".modal__container");
 const cardModalClose = cardModal.querySelector(".modal__close-btn");
@@ -63,12 +68,23 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
+  cardImage.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalImage.src = data.link;
+    previewModalCaption.textContent = data.name;
+    previewModalImage.alt = data.name;
+  });
+
   cardLikeBtn.addEventListener("click", () => {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
 
   cardDeleteBtn.addEventListener("click", () => {
     cardElement.remove();
+  });
+
+  previewModalCloseBtn.addEventListener("click", () => {
+    closeModal(previewModal);
   });
 
   return cardElement;
