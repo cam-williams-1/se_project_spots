@@ -1,6 +1,6 @@
 const initialCards = [
   {
-    name: "The Bridge",
+    name: "Golden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
   {
@@ -83,10 +83,6 @@ function getCardElement(data) {
     cardElement.remove();
   });
 
-  previewModalCloseBtn.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
-
   return cardElement;
 }
 
@@ -111,6 +107,7 @@ function handleNewCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(cardModal);
+  evt.target.reset();
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -130,4 +127,8 @@ cardModalBtn.addEventListener("click", () => {
 });
 cardModalClose.addEventListener("click", () => {
   closeModal(cardModal);
+});
+
+previewModalCloseBtn.addEventListener("click", () => {
+  closeModal(previewModal);
 });
