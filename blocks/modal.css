@@ -34,6 +34,7 @@
 .modal__container_preview {
   padding: 0;
   object-fit: contain;
+  background-color: unset;
 }
 
 .modal__image {
