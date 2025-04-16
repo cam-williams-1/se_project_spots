@@ -45,6 +45,7 @@ const previewModalCloseBtn = previewModal.querySelector(
 );
 const cardModal = document.querySelector("#card-modal");
 const cardForm = cardModal.querySelector(".modal__container");
+const cardSubmitBtn = cardModal.querySelector(".modal__submit-btn");
 const cardModalClose = cardModal.querySelector(".modal__close-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
@@ -94,6 +95,14 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
+//const escapeModal = () => {
+//  const modalList = document.querySelectorAll(".modal");
+//  modalList.forEach((modal) => {
+//    document.addEventListener("click", closeModal);
+//  });
+//};
+// need to add close modal by escpae key as well.
+
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
@@ -106,12 +115,18 @@ function handleNewCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
   evt.target.reset();
 }
 
 profileEditButton.addEventListener("click", () => {
   openModal(editModal);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
 });
