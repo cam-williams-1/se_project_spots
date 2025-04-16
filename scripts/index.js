@@ -89,19 +89,29 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
+  modal.addEventListener("click", handleOutsideClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
+  modal.removeEventListener("click", handleEscClose);
 }
 
-//const escapeModal = () => {
-//  const modalList = document.querySelectorAll(".modal");
-//  modalList.forEach((modal) => {
-//    document.addEventListener("click", closeModal);
-//  });
-//};
-// need to add close modal by escpae key as well.
+function handleEscClose(e) {
+  if (e.key === "Escape") {
+    const currentModal = document.querySelector(".modal_opened");
+    closeModal(currentModal);
+  }
+}
+
+function handleOutsideClose(e) {
+  const currentTarget = e.target;
+  if (currentTarget.classList.contains("modal")) {
+    closeModal(currentTarget);
+  }
+}
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
