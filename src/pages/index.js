@@ -1,3 +1,28 @@
+import "./index.css";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
+import logoSrc from "../images/spots-logo.svg";
+import avatarSrc from "../images/avatar.jpg";
+import editIconSrc from "../images/edit-icon.svg";
+import plusIconSrc from "../images/plus-icon.svg";
+import closeIconSrc from "../images/close-icon.svg";
+
+const spotsLogo = document.getElementById("spots-logo");
+spotsLogo.src = logoSrc;
+const avatar = document.getElementById("avatar");
+avatar.src = avatarSrc;
+const editIcon = document.getElementById("edit-icon");
+editIcon.src = editIconSrc;
+const plusIcon = document.getElementById("plus-icon");
+plusIcon.src = plusIconSrc;
+const closeIcon = document.getElementById("close-icon");
+closeIcon.src = closeIconSrc;
+const closeIconPost = document.getElementById("close-icon-post");
+closeIconPost.src = closeIconSrc;
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -157,3 +182,5 @@ cardModalClose.addEventListener("click", () => {
 previewModalCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
 });
+
+enableValidation(settings);

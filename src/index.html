@@ -7,34 +7,25 @@
     <meta name="description" content="???" />
     <meta name="keywords" content="???" />
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img
-          src="./images/spots-logo.svg"
-          alt="spots logo"
-          class="header__logo"
-        />
+        <img id="spots-logo" alt="spots logo" class="header__logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__avatar"
-            src="./images/avatar.jpg"
-            alt="avatar photo"
-          />
+          <img class="profile__avatar" id="avatar" alt="avatar photo" />
           <div class="profile__column">
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button class="profile__edit-btn" type="button">
-              <img src="./images/edit-icon.svg" alt="edit icon" />Edit Profile
+              <img id="edit-icon" alt="edit icon" />Edit Profile
             </button>
           </div>
           <button class="profile__add-btn" type="button">
-            <img src="./images/plus-icon.svg" alt="plus icon" />New Post
+            <img id="plus-icon" alt="plus icon" />New Post
           </button>
         </section>
         <section class="cards page__section">
@@ -59,7 +50,7 @@
         <div class="modal__container">
           <h2 class="modal__title">Edit Profile</h2>
           <button type="button" class="modal__close-btn">
-            <img src="./images/close-icon.svg" alt="close" />
+            <img id="close-icon" alt="close" />
           </button>
           <form name="edit-profile" class="modal__form" novalidate>
             <label for="profile-name-input" class="modal__label">
@@ -99,7 +90,7 @@
         <div class="modal__container">
           <h2 class="modal__title">New Post</h2>
           <button type="button" class="modal__close-btn">
-            <img src="./images/close-icon.svg" alt="close" />
+            <img id="close-icon-post" alt="close" />
           </button>
           <form name="edit-profile" class="modal__form" novalidate>
             <label for="add-card-link-input" class="modal__label">
@@ -143,7 +134,5 @@
         </div>
       </div>
     </div>
-    <script defer src="scripts/validation.js"></script>
-    <script defer src="scripts/index.js"></script>
   </body>
 </html>
