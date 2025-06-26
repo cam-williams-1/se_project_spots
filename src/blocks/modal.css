@@ -19,6 +19,7 @@
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
+  display: flex !important;
 }
 
 .modal__container {
@@ -35,6 +36,11 @@
   padding: 0;
   object-fit: contain;
   background-color: unset;
+}
+
+.modal__container_delete {
+  max-width: 630px;
+  max-height: 172px;
 }
 
 .modal__image {
@@ -98,6 +104,49 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
+}
+
+.modal__title_delete {
+  font-weight: 500;
+  font-size: 24px;
+  height: 24px;
+  margin: 0 0 32px;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+
+.modal__card-delete {
+  width: 156px;
+  height: 52px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ff6565;
+}
+
+.modal__card-delete:hover {
+  background-color: #ff3333;
+  cursor: pointer;
+}
+
+.modal__card-cancel {
+  width: 156px;
+  height: 52px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  border-color: #212121;
+  background-color: #fff;
+}
+
+.modal__card-cancel:hover {
+  background-color: #212121;
+  cursor: pointer;
+  color: #fff;
 }
 
 .modal__label {
