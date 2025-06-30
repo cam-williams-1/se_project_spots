@@ -249,16 +249,11 @@ function handleNewCardSubmit(evt) {
   api
     .addNewCard({ name: cardNameInput.value, link: cardLinkInput.value })
     .then((data) => {
-      const inputValues = {
-        name: cardNameInput.value,
-        link: cardLinkInput.value,
-      };
-      const cardElement = getCardElement(inputValues);
+      const cardElement = getCardElement(data);
       cardsList.prepend(cardElement);
-      disableButton(cardSubmitBtn, settings);
       closeModal(cardModal);
-
       evt.target.reset();
+      disableButton(cardSubmitBtn, settings);
     })
     .catch(console.error)
     .finally(() => {
